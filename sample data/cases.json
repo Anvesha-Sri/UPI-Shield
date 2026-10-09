@@ -1,0 +1,10 @@
+[
+{"id":"s1","kind":"suspicious","title":"Fake electricity bill","sender":"ELECTRICITY-SUPPORT","text":"URGENT: Your electricity bill payment failed. Pay ₹2,499 immediately using the link https://electricity-pay.example.test/verify to avoid disconnection. [SIMULATED]"},
+{"id":"s2","kind":"suspicious","title":"Fake bank account suspension","sender":"BANKK-ALERT","text":"Your bank account will be blocked today. Update KYC at http://bank-demo-kyc.example.test/login and share OTP to confirm. [SIMULATED]"},
+{"id":"s3","kind":"suspicious","title":"Fake UPI collect request","sender":"+91 90000 00001","text":"Approve the UPI collect request of ₹4,999 from refund-support@demo to verify your account. Enter your UPI PIN to approve. [SIMULATED]"},
+{"id":"s4","kind":"suspicious","title":"Fake job registration deposit","sender":"+91 90000 00002","text":"Congratulations! You are selected for a work-from-home job. Pay refundable registration fee ₹1,500 to hr-jobs@demo today to confirm joining. [SIMULATED]"},
+{"id":"s5","kind":"suspicious","title":"Suspicious APK payment message","sender":"VM-ELECT","text":"Your electricity bill is pending. Install our bill app now from http://bit.ly/bill-app.apk and pay ₹3,200. [SIMULATED]"},
+{"id":"l1","kind":"legitimate","title":"Normal bill reminder","sender":"ELECTRICITY-TEST","text":"Your electricity bill of ₹640 is generated. Due date 20 Oct. Pay via the official app or https://electricity.example.test/bills [SIMULATED]"},
+{"id":"l2","kind":"legitimate","title":"Known recipient payment","sender":"contact: Ravi Kumar","text":"Paying ₹450 to ravi.kumar@demo for dinner split. [SIMULATED]"},
+{"id":"l3","kind":"legitimate","title":"Verified organisation notification","sender":"BANK-DEMO","text":"Your September statement is ready. View it in the Demo Bank app. We never ask for OTP or PIN. [SIMULATED]"}
+]

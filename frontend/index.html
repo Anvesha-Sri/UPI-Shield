@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPI Shield | Security Center</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="brand" href="/">
+        <span class="brand-icon">⬡</span>
+        <span>UPI <b>SHIELD</b></span>
+      </a>
+
+      
+
+      
+<nav class="sidebar-nav">
+  <button type="button" class="nav-item active" data-view="dashboard">
+    Dashboard
+  </button>
+
+  <button type="button" class="nav-item" data-view="message">
+    Message Scanner
+  </button>
+
+  <button type="button" class="nav-item" data-view="url">
+    Link Scanner
+  </button>
+
+  <button type="button" class="nav-item" data-view="upi">
+    UPI Checker
+  </button>
+</nav>
+
+      <div class="sidebar-bottom">
+        <span class="status-dot"></span>
+        <span>Detection API</span>
+        <span class="status-text">SIMULATION</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SECURITY OPERATIONS / UPI</p>
+          <h1 id="page-title">Security dashboard</h1>
+        </div>
+        <div class="api-status"><span class="status-dot"></span> Demo environment</div>
+      </header>
+
+      <section id="view-dashboard" class="view">
+        <div class="welcome">
+          <div>
+            <p class="eyebrow">UPI SHIELD MONITOR</p>
+            <h2>Stay one step ahead of scams.</h2>
+            <p>Analyze suspicious messages, payment links and UPI payloads before acting.</p>
+          </div>
+          <div class="shield-art">⬡</div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span>Total scans</span><strong id="total">0</strong>
+            <small>Current server session</small>
+          </article>
+          <article class="stat-card">
+            <span>Suspicious scans</span><strong id="suspicious">0</strong>
+            <small>Score ≥ 30</small>
+          </article>
+          <article class="stat-card">
+            <span>High / critical</span><strong id="high-risk">0</strong>
+            <small>Elevated risk results</small>
+          </article>
+          <article class="stat-card">
+            <span>Lower-risk scans</span><strong id="legitimate">0</strong>
+            <small>Score below 30</small>
+          </article>
+        </div>
+
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">QUICK ACTION</p><h3>Analyze a message</h3></div>
+              <span class="panel-icon">⌕</span>
+            </div>
+            <p class="muted">Paste an SMS, WhatsApp message or payment notification.</p>
+            <textarea id="quick-message" placeholder="Example: URGENT! Your electricity will be disconnected today. Pay immediately..."></textarea>
+            <label for="quick-sender">Sender ID (optional)</label>
+            <input id="quick-sender" placeholder="e.g. UNKNOWN">
+            <button class="primary-btn" id="quick-analyze">Analyze message →</button>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">RISK OVERVIEW</p><h3>Scan distribution</h3></div>
+            </div>
+            <div id="distribution" class="distribution">
+              <p class="muted">Run a scan to populate the dashboard.</p>
+            </div>
+            <p class="footnote">Results are based on simulated, rule-based analysis.</p>
+          </article>
+        </div>
+
+        <article class="panel activity-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">LIVE SESSION</p><h3>Recent analyses</h3></div>
+            <button class="secondary-btn" id="refresh-dashboard">Refresh</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Time</th><th>Type</th><th>Risk</th><th>Score</th><th>Action</th></tr></thead>
+              <tbody id="recent">
+                <tr><td colspan="5" class="muted">No analyses yet. Try the message scanner.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="view-message" class="view hidden">
+        <div class="page-intro">
+          <p class="eyebrow">THREAT ANALYSIS</p>
+          <h2>Message scanner</h2>
+          <p>Inspect suspicious wording, sender information, URLs and UPI IDs.</p>
+        </div>
+        <article class="panel scanner-panel">
+          <label for="message-text">Message content</label>
+          <textarea id="message-text" class="large-input" placeholder="Paste the complete message here..." required></textarea>
+          <label for="message-sender">Sender ID</label>
+          <input id="message-sender" placeholder="e.g. UNKNOWN or ELECTRICITY-TEST">
+          <div class="form-actions">
+            <button class="secondary-btn" id="message-clear">Clear</button>
+            <button class="primary-btn" id="message-analyze">Analyze message →</button>
+          </div>
+        </article>
+        <div id="message-result" class="result-slot"></div>
+      </section>
+
+      <section id="view-url" class="view hidden">
+        <div class="page-intro">
+          <p class="eyebrow">LINK INSPECTION</p>
+          <h2>URL scanner</h2>
+          <p>Inspect a link's hostname and suspicious URL patterns without opening it.</p>
+        </div>
+        <article class="panel scanner-panel">
+          <label for="url-text">URL to inspect</label>
+          <input id="url-text" class="large-field" placeholder="https://example.com/verify">
+          <p class="footnote">Paste the URL only. This tool applies static checks; it does not verify a site's live reputation.</p>
+          <button class="primary-btn" id="url-analyze">Inspect URL →</button>
+        </article>
+        <div id="url-result" class="result-slot"></div>
+      </section>
+
+      <section id="view-upi" class="view hidden">
+        <div class="page-intro">
+          <p class="eyebrow">PAYMENT SAFETY</p>
+          <h2>UPI payload checker</h2>
+          <p>Review recipient and amount information encoded in a UPI payment link or decoded QR payload.</p>
+        </div>
+        <article class="panel scanner-panel">
+          <label for="upi-text">UPI payment payload</label>
+          <textarea id="upi-text" class="large-input" placeholder="upi://pay?pa=recipient@upi&amp;pn=Recipient&amp;am=500"></textarea>
+          <p class="footnote">This accepts UPI payload text, not an uploaded QR image. No real payment is initiated.</p>
+          <button class="primary-btn" id="upi-analyze">Check payment →</button>
+        </article>
+        <div id="upi-result" class="result-slot"></div>
+      </section>
+
+      <footer>UPI Shield · Educational prototype · Simulated analysis only</footer>
+    </main>
+  </div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
